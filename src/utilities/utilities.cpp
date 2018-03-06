@@ -101,7 +101,7 @@ cv::Mat mrsmap::visualizeDepth( const cv::Mat& depthImg, float minDepth, float m
 
 Eigen::Vector2f mrsmap::pointImagePos( const Eigen::Vector4f& p ) {
 
-	if( isnan( p(0) ) )
+	if( std::isnan( p(0) ) )
 		return Eigen::Vector2f( p(0), p(0) );
 
 	return Eigen::Vector2f( 525.0 * p(0) / p(2), 525.0 * p(1) / p(2) );
@@ -111,7 +111,7 @@ Eigen::Vector2f mrsmap::pointImagePos( const Eigen::Vector4f& p ) {
 
 bool mrsmap::pointInImage( const Eigen::Vector4f& p ) {
 
-	if( isnan( p(0) ) )
+	if( std::isnan( p(0) ) )
 		return false;
 
 	double px = 525.0 * p(0) / p(2);
@@ -127,7 +127,7 @@ bool mrsmap::pointInImage( const Eigen::Vector4f& p ) {
 
 bool mrsmap::pointInImage( const Eigen::Vector4f& p, const unsigned int imageBorder ) {
 
-	if( isnan( p(0) ) )
+	if( std::isnan( p(0) ) )
 		return false;
 
 	double px = 525.0 * p(0) / p(2);
@@ -377,7 +377,7 @@ double mrsmap::averageDepth( const pcl::PointCloud< pcl::PointXYZRGB >::ConstPtr
 
 			const pcl::PointXYZRGB& p = cloud->points[idx];
 
-			if( !isnan( p.z ) ) {
+			if( !std::isnan( p.z ) ) {
 				sum += p.z;
 				num += 1.0;
 			}
@@ -401,7 +401,7 @@ double mrsmap::medianDepth( const pcl::PointCloud< pcl::PointXYZRGB >::ConstPtr&
 
 			const pcl::PointXYZRGB& p = cloud->points[idx];
 
-			if( !isnan( p.z ) ) {
+			if( !std::isnan( p.z ) ) {
 				depths.push_back(p.z);
 			}
 
@@ -938,7 +938,7 @@ void mrsmap::downsamplePointCloudClosest( const pcl::PointCloud< pcl::PointXYZRG
 
 			}
 
-			if( !isnan( cloudIn->points[y*cloudIn->width+x].x ) && cloudIn->points[y*cloudIn->width+x].z < closestDepth ) {
+			if( !std::isnan( cloudIn->points[y*cloudIn->width+x].x ) && cloudIn->points[y*cloudIn->width+x].z < closestDepth ) {
 
 				cloudOut->points[idx].x = cloudIn->points[y*cloudIn->width+x].x;
 				cloudOut->points[idx].y = cloudIn->points[y*cloudIn->width+x].y;

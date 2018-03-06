@@ -195,7 +195,7 @@ void MultiResolutionSurfelRegistration::setPriorPose( bool enabled, const Eigen:
 
 spatialaggregate::OcTreeNode< float, MultiResolutionSurfelMap::NodeValue >* MultiResolutionSurfelRegistration::getOccluder2( const Eigen::Vector4f& p, const MultiResolutionSurfelMap& target, double z_similarity_factor ) {
 
-	if( isnan( p(0) ) )
+	if( std::isnan( p(0) ) )
 		return NULL;
 
 	int px = 525.0 * p(0) / p(2) + 319.5;
@@ -236,7 +236,7 @@ spatialaggregate::OcTreeNode< float, MultiResolutionSurfelMap::NodeValue >* Mult
 
 bool pointOccluded( const Eigen::Vector4f& p, const MultiResolutionSurfelMap& target, double z_similarity_factor ) {
 
-	if( isnan( p(0) ) )
+	if( std::isnan( p(0) ) )
 		return false;
 
 	int px = 525.0 * p(0) / p(2) + 319.5;
@@ -273,7 +273,7 @@ bool pointOccluded( const Eigen::Vector4f& p, const MultiResolutionSurfelMap& ta
 // the "reverse" of pointOccluded
 bool pointSeenThrough( const Eigen::Vector4f& p, const MultiResolutionSurfelMap& target, double z_similarity_factor, bool markSeenThrough = false ) {
 
-	if( isnan( p(0) ) )
+	if( std::isnan( p(0) ) )
 		return false;
 
 	int px = 525.0 * p(0) / p(2) + 319.5;
@@ -2367,7 +2367,7 @@ public:
 		assoc.weight = weight;
 		assoc.match = 1;
 
-		assert( !isnan(error) );
+		assert( !std::isnan(error) );
 
 
 
@@ -3758,7 +3758,7 @@ bool MultiResolutionSurfelRegistration::estimateTransformationNewton( Eigen::Mat
 
 
 
-		if( isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f ) {
+		if( std::isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f ) {
 			x = last_x;
 			return false;
 		}
@@ -3996,7 +3996,7 @@ bool MultiResolutionSurfelRegistration::estimateTransformationLevenbergMarquardt
 
 
 
-		if( isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f ) {
+		if( std::isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f ) {
 			return false;
 		}
 
@@ -4204,7 +4204,7 @@ bool MultiResolutionSurfelRegistration::estimateTransformationGaussNewton( Eigen
 
 
 
-		if( isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f ) {
+		if( std::isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f ) {
 			std::cout << "GN registration failed\n";
 			return false;
 		}
@@ -4595,7 +4595,7 @@ bool MultiResolutionSurfelRegistration::estimateTransformationLevenbergMarquardt
 		qz = x(5);
 		qw = lastWSign_ * sqrt(1.0 - qx * qx - qy * qy - qz * qz);
 
-		if (isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f) {
+		if (std::isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f) {
 			return false;
 		}
 
@@ -4924,7 +4924,7 @@ bool MultiResolutionSurfelRegistration::estimateTransformationGaussNewtonPF( Eig
 		qz = x(5);
 		qw = lastWSign_ * sqrt(1.0 - qx * qx - qy * qy - qz * qz);
 
-		if (isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f) {
+		if (std::isnan(qw) || fabsf(qx) > 1.f || fabsf(qy) > 1.f || fabsf(qz) > 1.f) {
 			return false;
 		}
 

@@ -42,6 +42,7 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 # OctreeLib required
+# set(OctreeLib_DIR  $ENV(OCTREELIB_INSTALL_DIR))
 find_package(OctreeLib REQUIRED)
 include_directories(${OCTREELIB_INCLUDE_DIRS})
 
@@ -55,7 +56,8 @@ find_package(TBB REQUIRED)
 include_directories(${TBB_INCLUDE_DIRS})
 
 # OpenCV required
-find_package(OpenCV REQUIRED)
+set(OpenCV_DIR  $ENV(OPENCV2_INSTALL_DIR))
+find_package(OpenCV 2 REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 message("${OpenCV_INCLUDE_DIRS}")
 

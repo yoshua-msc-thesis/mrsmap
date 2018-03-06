@@ -102,11 +102,13 @@ SLAM::SLAM() {
 	// allocating the optimizer
 	optimizer_ = new g2o::SparseOptimizer();
 	optimizer_->setVerbose(true);
-	SlamLinearSolver* linearSolver = new SlamLinearSolver();
-	linearSolver->setBlockOrdering(false);
-	SlamBlockSolver* solver = new SlamBlockSolver(linearSolver);
+	// SlamLinearSolver* linearSolver = new SlamLinearSolver();
+	// linearSolver->setBlockOrdering(false);
+	// SlamBlockSolver* solver = new SlamBlockSolver(linearSolver);
+	// g2o::OptimizationAlgorithmLevenberg* solverLevenberg = new g2o::OptimizationAlgorithmLevenberg(solver);
 
-	g2o::OptimizationAlgorithmLevenberg* solverLevenberg = new g2o::OptimizationAlgorithmLevenberg(solver);
+	g2o::OptimizationAlgorithmLevenberg* solverLevenberg = new g2o::OptimizationAlgorithmLevenberg(
+    	g2o::make_unique<g2o::BlockSolver_6_3>(g2o::make_unique<g2o::LinearSolverCSparse<g2o::BlockSolver_6_3::PoseMatrixType>>()));
 
 	optimizer_->setAlgorithm( solverLevenberg );
 

@@ -250,13 +250,13 @@ void MultiResolutionSurfelMap::addPoints( const pcl::PointCloud< pcl::PointXYZRG
 		const float y = p.y;
 		const float z = p.z;
 
-		if ( isnan( x ) || isinf( x ) )
+		if ( std::isnan( x ) || std::isinf( x ) )
 			continue;
 
-		if ( isnan( y ) || isinf( y ) )
+		if ( std::isnan( y ) || std::isinf( y ) )
 			continue;
 
-		if ( isnan( z ) || isinf( z ) )
+		if ( std::isnan( z ) || std::isinf( z ) )
 			continue;
 
 		float rgbf = p.rgb;
@@ -1399,13 +1399,13 @@ void MultiResolutionSurfelMap::findImageBorderPoints( const pcl::PointCloud< pcl
 			const float py = p.y;
 			const float pz = p.z;
 
-			if ( isnan( px ) || isinf( px ) )
+			if ( std::isnan( px ) || std::isinf( px ) )
 				continue;
 
-			if ( isnan( py ) || isinf( py ) )
+			if ( std::isnan( py ) || std::isinf( py ) )
 				continue;
 
-			if ( isnan( pz ) || isinf( pz ) )
+			if ( std::isnan( pz ) || std::isinf( pz ) )
 				continue;
 
 			indices.push_back( idx );
@@ -1423,13 +1423,13 @@ void MultiResolutionSurfelMap::findImageBorderPoints( const pcl::PointCloud< pcl
 			const float py = p.y;
 			const float pz = p.z;
 
-			if ( isnan( px ) || isinf( px ) )
+			if ( std::isnan( px ) || std::isinf( px ) )
 				continue;
 
-			if ( isnan( py ) || isinf( py ) )
+			if ( std::isnan( py ) || std::isinf( py ) )
 				continue;
 
-			if ( isnan( pz ) || isinf( pz ) )
+			if ( std::isnan( pz ) || std::isinf( pz ) )
 				continue;
 
 			indices.push_back( idx );
@@ -1452,13 +1452,13 @@ void MultiResolutionSurfelMap::findImageBorderPoints( const pcl::PointCloud< pcl
 			const float py = p.y;
 			const float pz = p.z;
 
-			if ( isnan( px ) || isinf( px ) )
+			if ( std::isnan( px ) || std::isinf( px ) )
 				continue;
 
-			if ( isnan( py ) || isinf( py ) )
+			if ( std::isnan( py ) || std::isinf( py ) )
 				continue;
 
-			if ( isnan( pz ) || isinf( pz ) )
+			if ( std::isnan( pz ) || std::isinf( pz ) )
 				continue;
 
 			indices.push_back( idx );
@@ -1476,13 +1476,13 @@ void MultiResolutionSurfelMap::findImageBorderPoints( const pcl::PointCloud< pcl
 			const float py = p.y;
 			const float pz = p.z;
 
-			if ( isnan( px ) || isinf( px ) )
+			if ( std::isnan( px ) || std::isinf( px ) )
 				continue;
 
-			if ( isnan( py ) || isinf( py ) )
+			if ( std::isnan( py ) || std::isinf( py ) )
 				continue;
 
-			if ( isnan( pz ) || isinf( pz ) )
+			if ( std::isnan( pz ) || std::isinf( pz ) )
 				continue;
 
 			indices.push_back( idx );
@@ -1522,7 +1522,7 @@ void MultiResolutionSurfelMap::findVirtualBorderPoints( const pcl::PointCloud< p
 			const float py = p.y;
 			const float pz = p.z;
 
-			if( isnan( px ) ) {
+			if( std::isnan( px ) ) {
 				continue;
 			}
 
@@ -1564,7 +1564,7 @@ void MultiResolutionSurfelMap::findVirtualBorderPoints( const pcl::PointCloud< p
 			const float py = p.y;
 			const float pz = p.z;
 
-			if( isnan( px ) )
+			if( std::isnan( px ) )
 				continue;
 
 			// check for depth jumps
@@ -1619,7 +1619,7 @@ void MultiResolutionSurfelMap::findForegroundBorderPoints( const pcl::PointCloud
 			const float py = p.y;
 			const float pz = p.z;
 
-			if( isnan( px ) ) {
+			if( std::isnan( px ) ) {
 				continue;
 			}
 
@@ -1659,7 +1659,7 @@ void MultiResolutionSurfelMap::findForegroundBorderPoints( const pcl::PointCloud
 			const float py = p.y;
 			const float pz = p.z;
 
-			if( isnan( px ) )
+			if( std::isnan( px ) )
 				continue;
 
 			// check for depth jumps
@@ -1712,7 +1712,7 @@ void MultiResolutionSurfelMap::findContourPoints( const pcl::PointCloud< pcl::Po
 			const float py = p.y;
 			const float pz = p.z;
 
-			if( isnan( px ) ) {
+			if( std::isnan( px ) ) {
 				continue;
 			}
 
@@ -1755,7 +1755,7 @@ void MultiResolutionSurfelMap::findContourPoints( const pcl::PointCloud< pcl::Po
 			const float py = p.y;
 			const float pz = p.z;
 
-			if( isnan( px ) )
+			if( std::isnan( px ) )
 				continue;
 
 			// check for depth jumps
@@ -1799,13 +1799,13 @@ void MultiResolutionSurfelMap::clearAtPoints( const pcl::PointCloud< pcl::PointX
 		const float y = p.y;
 		const float z = p.z;
 
-		if ( isnan( x ) || isinf( x ) )
+		if ( std::isnan( x ) || std::isinf( x ) )
 			continue;
 
-		if ( isnan( y ) || isinf( y ) )
+		if ( std::isnan( y ) || std::isinf( y ) )
 			continue;
 
-		if ( isnan( z ) || isinf( z ) )
+		if ( std::isnan( z ) || std::isinf( z ) )
 			continue;
 
 		Eigen::Matrix< double, 3, 1 > pos;
@@ -1857,13 +1857,13 @@ void MultiResolutionSurfelMap::markNoUpdateAtPoints( const pcl::PointCloud< pcl:
 		const float y = p.y;
 		const float z = p.z;
 
-		if ( isnan( x ) || isinf( x ) )
+		if ( std::isnan( x ) || std::isinf( x ) )
 			continue;
 
-		if ( isnan( y ) || isinf( y ) )
+		if ( std::isnan( y ) || std::isinf( y ) )
 			continue;
 
-		if ( isnan( z ) || isinf( z ) )
+		if ( std::isnan( z ) || std::isinf( z ) )
 			continue;
 
 		Eigen::Matrix< double, 3, 1 > pos;
@@ -1915,13 +1915,13 @@ void MultiResolutionSurfelMap::markBorderAtPoints( const pcl::PointCloud< pcl::P
 		const float y = p.y;
 		const float z = p.z;
 
-		if ( isnan( x ) || isinf( x ) )
+		if ( std::isnan( x ) || std::isinf( x ) )
 			continue;
 
-		if ( isnan( y ) || isinf( y ) )
+		if ( std::isnan( y ) || std::isinf( y ) )
 			continue;
 
-		if ( isnan( z ) || isinf( z ) )
+		if ( std::isnan( z ) || std::isinf( z ) )
 			continue;
 
 		Eigen::Matrix< double, 3, 1 > pos;
@@ -2029,7 +2029,7 @@ void MultiResolutionSurfelMap::clearUpdateSurfelsAtPoints( const pcl::PointCloud
 		const float y = p.y;
 		const float z = p.z;
 
-		if ( isnan( x ) )
+		if ( std::isnan( x ) )
 			continue;
 
 		Eigen::Matrix< double, 3, 1 > pos;
@@ -2200,7 +2200,7 @@ bool MultiResolutionSurfelMap::pointInForeground( const Eigen::Vector3f& positio
 	for ( int y = 0; y < patch.rows; y++ ) {
 		for ( int x = 0; x < patch.cols; x++ ) {
 			const float depth = patch.at< float > ( y, x );
-			if ( !isnan( depth ) ) {
+			if ( !std::isnan( depth ) ) {
 				float dist = fabsf( queryDepth - depth );
 				if ( dist < bestDist ) {
 					bestDist = dist;
@@ -2226,7 +2226,7 @@ bool MultiResolutionSurfelMap::pointInForeground( const Eigen::Vector3f& positio
 
 				const float depth = patch.at< float > ( y, x );
 				//				img_show.at<float>(r.y+y,r.x+x) = 0.f;
-				if ( !isnan( depth ) ) {
+				if ( !std::isnan( depth ) ) {
 
 					if ( trackedDepth - depth > jumpThreshold ) {
 						return false;
@@ -2432,7 +2432,7 @@ std::vector< unsigned int > MultiResolutionSurfelMap::findInliers( const std::ve
 		const float y = p.y;
 		const float z = p.z;
 
-		if ( isnan( x ) )
+		if ( std::isnan( x ) )
 			continue;
 
 		float rgbf = p.rgb;
